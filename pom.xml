@@ -153,7 +153,7 @@
             </plugin>
 
             <!-- Spring Boot Maven Plugin (Alternative) -->
-            <plugin>
+            <!-- plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.1.2</version>
@@ -167,7 +167,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 
