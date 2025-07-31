@@ -18,4 +18,8 @@ public class UserRepository {
                 .createQuery("FROM User", User.class)
                 .getResultList();
     }
+
+    public User findById(int id) {
+        return entityManager.find(User.class, id);
+    }
 }

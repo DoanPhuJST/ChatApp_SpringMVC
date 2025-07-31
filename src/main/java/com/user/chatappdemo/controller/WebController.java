@@ -52,4 +52,27 @@ public class WebController {
             return "error";
         }
     }
+
+    @GetMapping("/profile/{userId}")
+    public String profile(@PathVariable int userId, Model model) {
+        try {
+            User user = userService.getUserById(userId);
+            if (user == null) {
+                model.addAttribute("error", "Không tìm thấy người dùng với ID: " + userId);
+                return "error";
+            }
+            List<PostResponse> userPosts = postService.getUserPosts(userId);
+            List<FollowerResponse> followers = followService.getUserFollowers(userId);
+            List<FollowerResponse> followings = followService.getUserFollowings(userId);
+
+            model.addAttribute("user", user);
+            model.addAttribute("posts", userPosts);
+            model.addAttribute("followers", followers);
+            model.addAttribute("followings", followings);
+            return "profile";
+        } catch (Exception e) {
+            model.addAttribute("error", "Không thể tải thông tin người dùng: " + e.getMessage());
+            return "error";
+        }
+    }
 }
