@@ -18,21 +18,4 @@ public class UserRepository {
                 .createQuery("FROM User", User.class)
                 .getResultList();
     }
-
-    public User findById(int id) {
-        return sessionFactory.getCurrentSession()
-                .get(User.class, id);
-    }
-
-    public User save(User user) {
-        sessionFactory.getCurrentSession().saveOrUpdate(user);
-        return user;
-    }
-
-    public void deleteById(int id) {
-        User user = findById(id);
-        if (user != null) {
-            sessionFactory.getCurrentSession().delete(user);
-        }
-    }
 }
